@@ -1,20 +1,23 @@
 from collections import deque
+import sys
+N = int(sys.stdin.readline())
 
-n = int(input())
-q = deque()
-q.append((n,[n]))
-visited = [0]*(n+1)
+deq = deque() # N을 1로 만드는 방법을 큐에 저장
+deq.append([N])
+visited = [0] * (N + 1)
 
-while(q):
-    num,ans = q.popleft()
-    if num == 1:
-        print(len(ans)-1)
-        print(*ans)
+while deq:
+    node = deq.popleft()
+    tmp = node[-1]
+    if tmp == 1:
         break
-    if not visited[num]:
-        visited[num]=1
-        if num%3==0:
-            q.append((num//3,ans+[num//3]))
-        if num%2==0:
-            q.append((num//2,ans+[num//2]))
-        q.append((num-1,ans+[num-1]))
+    if not visited[tmp]:
+        visited[tmp] = True
+        if tmp % 3 == 0:
+            deq.append(node + [tmp // 3])    
+        if tmp % 2 == 0:
+            deq.append(node + [tmp // 2])    
+        deq.append(node + [tmp - 1])
+
+print(len(node) - 1)
+print(*node)
