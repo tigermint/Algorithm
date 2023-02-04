@@ -15,7 +15,6 @@ while left <= right:
         sum += arr[i]
     if sum:
         count += 1
-
     if count > M:
         left = mid + 1
     else:
@@ -23,3 +22,5 @@ while left <= right:
         answer = mid
 
 print(answer)
+ 
+
