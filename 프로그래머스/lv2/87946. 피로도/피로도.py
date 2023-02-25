@@ -10,7 +10,7 @@ def solution(k, dungeons):
                 tmp_k -= p[1]
                 count += 1
             else: break
-        if answer < count: answer = count 
+        answer = max(answer, count)
         if answer == len(dungeons): break
             
     return answer
