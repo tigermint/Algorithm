@@ -2,7 +2,7 @@ from collections import deque
 dic = {
     '}': '{',
     ']': '[',
-    ')': '(',
+    ')': '('
 }
 def check(deq):
     stack = []
