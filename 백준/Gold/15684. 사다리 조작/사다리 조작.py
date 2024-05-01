@@ -24,7 +24,7 @@ def dfs(n, s):
     for j in range(s, CNT):
         ti, tj = pos[j]
         # 왼/오 둘다 사다리 아니면 가능
-        if arr[ti][tj - 1] == 0 and arr[ti][tj - 1] == 0:
+        if arr[ti][tj - 1] == 0 and arr[ti][tj + 1] == 0:
             arr[ti][tj] = 1
             dfs(n + 1, j + 1)
             arr[ti][tj] = 0
@@ -42,7 +42,7 @@ for _ in range(M):
 pos = []
 for i in range(1, H + 1):
     for j in range(1, N + 1):
-        if arr[i][j] == 0:
+        if arr[i][j] == 0:  # 사다리 놓을 수 있는 곳
             pos.append((i, j))
 CNT = len(pos)
 
