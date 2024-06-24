@@ -35,9 +35,9 @@ public class Main {
                 return;
             }
 
-            if (row >= col) { // R 연산
+            if (row >= col) { //R 연산
                 list = calculate(list);
-            } else { // C 연산
+            } else { //C 연산
                 list = trans(list);
                 list = calculate(list);
                 list = trans(list);
@@ -62,16 +62,16 @@ public class Main {
         }
         return transMatrix;
     }
-
     private static List<List<Integer>> calculate(final List<List<Integer>> list) {
         int maxSize = 0;
         List<List<Integer>> newList = new ArrayList<>();
 
-        for (int i = 0; i < list.size(); i++) {
+        for (List<Integer> integers : list) {
+
             final Map<Integer, Integer> map = new HashMap<>();
-            for (int j = 0; j < list.get(i).size(); j++) {
-                int value = list.get(i).get(j);
-                if (value != 0) { // 0은 무시합니다.
+
+            for (int value : integers) {
+                if (value != 0) { // 0은 무시
                     map.put(value, map.getOrDefault(value, 0) + 1);
                 }
             }
@@ -83,6 +83,7 @@ public class Main {
             );
 
             final List<Integer> sortedList = new ArrayList<>();
+
             for (Map.Entry<Integer, Integer> entry : entries) {
                 sortedList.add(entry.getKey());
                 sortedList.add(entry.getValue());
@@ -91,6 +92,7 @@ public class Main {
             newList.add(sortedList);
         }
 
+        // maxSize 만큼 0 추가
         for (List<Integer> row : newList) {
             while (row.size() < maxSize) {
                 row.add(0);
@@ -101,12 +103,12 @@ public class Main {
         if (newList.size() > 100) {
             newList = newList.subList(0, 100);
         }
+
         for (List<Integer> row : newList) {
             if (row.size() > 100) {
                 row.subList(100, row.size()).clear();
             }
         }
-
         return newList;
     }
 }
